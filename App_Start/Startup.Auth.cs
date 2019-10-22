@@ -58,11 +58,11 @@ namespace Hotel2._0
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "613492216427-gmp2q3tjcofhtn7j1k2qti3cmr0iu7f0.apps.googleusercontent.com",
+                ClientSecret = "aHXE5NT6osm2t-bflYGGKbia"
+            });
         }
     }
 }

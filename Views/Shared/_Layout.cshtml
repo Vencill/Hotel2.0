@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.min.js"></script>
 
 </head>
 <body>
@@ -28,8 +30,11 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Orders", "Index", "Bookings")</li>
-                        <li>@Html.ActionLink("Customers", "Index", "Users")</li>
-                        <li>@Html.ActionLink("Send Email", "Send_Email", "Home")</li>
+                        <li>@Html.ActionLink("Customer Profile", "Index", "Users")</li>
+                        if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Send Email", "Send_Email", "Home")</li>
+                        }
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -43,6 +48,12 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

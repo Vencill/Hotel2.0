@@ -13,7 +13,7 @@ namespace Hotel2._0.Utils
     public class EmailSender
     {
         // Please use your API KEY here.
-        private const String API_KEY = "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";
+        private const String API_KEY = "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";
 
         public void Send(String toEmailList, String subject, String contents, string path, HttpPostedFileBase postedFile)
         {

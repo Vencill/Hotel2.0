@@ -21,7 +21,7 @@
         .ol-popup {
             position: absolute;
             background-color: white;
-            //-webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
             filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
             padding: 15px;
             border-radius: 10px;
@@ -150,13 +150,13 @@
 
         geolocation.setTracking(true);
 
-        //145.038,-37.876
+        
         function centerMap(coordinates) {
             map.getView().setCenter(ol.proj.transform([coordinates[0], coordinates[1]], 'EPSG:4326', 'EPSG:3857'));
             map.getView().setZoom(15);
         }
 
-        var hotels = [[145.038, -37.876, 'Hotel'], [145.038, -37.880, 'Monash'], [145.038, -37.870, 'Train Station']];
+        var hotels = [[145.038, -37.876, 'Hotel'], [145.044, -37.877, 'Monash'], [145.0425, -37.87774, 'Train Station']];
 
         var hotelFeature = [];
         var hotelStyle = new ol.style.Style({
@@ -178,6 +178,8 @@
         for (var i = 0; i < hotels.length; i++) {
             var feature = new ol.Feature({
                 name: hotels[i][2],
+                longitude: hotels[i][0],
+                latitude:hotels[i][1],
                 geometry: new ol.geom.Point(ol.proj.transform([hotels[i][0], hotels[i][1]], 'EPSG:4326', 'EPSG:3857')),
                 population: 4000,
                 rainfall: 500
@@ -230,8 +232,9 @@
             if (feature) {
                 var coordinates = map.getCoordinateFromPixel(evt.pixel);
                 overlay.setPosition(coordinates);
-                content.innerHTML = '<p>' + feature.get('name') + '</p><code>123M</code>';
-            } else {
+                content.innerHTML = '<p>' + feature.get('name') + '</p><code>longitude: </code>' + feature.get('longitude')+ '</p><code>latitude: </code>' + feature.get('latitude');
+            }
+            else {
                 overlay.setPosition(undefined);
                 closer.blur();
                 return false;

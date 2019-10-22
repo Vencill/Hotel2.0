@@ -8,11 +8,12 @@
 <h2>Index</h2>
 
 <p>
-    @if (User.Identity.IsAuthenticated)
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
         @Html.ActionLink("Create New", "Create")
     }
 </p>
+
 
 
 
@@ -56,13 +57,18 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+                
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
             </td>
         </tr>
     }
 
 </table>
+
 
 
 
