@@ -5,15 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Do your rating here for your order!</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Check_inDate)
+       
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rate)
@@ -29,9 +28,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Check_inDate)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Rate)
         </td>

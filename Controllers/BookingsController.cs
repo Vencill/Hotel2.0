@@ -133,5 +133,19 @@ namespace Hotel2._0.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Rating(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Booking booking = db.Bookings.Find(id);
+            if (booking == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("Index","Ratings");
+        }
     }
 }

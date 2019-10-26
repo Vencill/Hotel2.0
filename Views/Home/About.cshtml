@@ -1,8 +1,10 @@
 ﻿@{
     ViewBag.Title = "About";
 }
+
+  
 <head>
-    <title>Geolocation</title>
+    <H2>Come here and find us!</H2>
 
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 
@@ -31,7 +33,7 @@
             min-width: 280px;
         }
 
-        .ol-popup:after, .ol-popup:before {
+            .ol-popup:after, .ol-popup:before {
                 top: 100%;
                 border: solid transparent;
                 content: " ";
@@ -39,21 +41,21 @@
                 width: 0;
                 position: absolute;
                 pointer-events: none;
-        }
+            }
 
-        .ol-popup:after {
+            .ol-popup:after {
                 border-top-color: white;
                 border-width: 10px;
                 left: 48px;
                 margin-left: -10px;
-        }
+            }
 
-        .ol-popup:before {
+            .ol-popup:before {
                 border-top-color: #cccccc;
                 border-width: 11px;
                 left: 48px;
                 margin-left: -11px;
-        }
+            }
 
         .ol-popup-closer {
             text-decoration: none;
@@ -62,17 +64,14 @@
             right: 8px;
         }
 
-        .ol-popup-closer:after {
+            .ol-popup-closer:after {
                 content: "✖";
-        }
-
+            }
     </style>
-    
+
 </head>
 
 <body>
-    <br>
-    <br>
     <div id="map" class="map" style="height:400px; width:80%"></div>
     <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -150,7 +149,7 @@
 
         geolocation.setTracking(true);
 
-        
+
         function centerMap(coordinates) {
             map.getView().setCenter(ol.proj.transform([coordinates[0], coordinates[1]], 'EPSG:4326', 'EPSG:3857'));
             map.getView().setZoom(15);
@@ -179,7 +178,7 @@
             var feature = new ol.Feature({
                 name: hotels[i][2],
                 longitude: hotels[i][0],
-                latitude:hotels[i][1],
+                latitude: hotels[i][1],
                 geometry: new ol.geom.Point(ol.proj.transform([hotels[i][0], hotels[i][1]], 'EPSG:4326', 'EPSG:3857')),
                 population: 4000,
                 rainfall: 500
@@ -232,7 +231,7 @@
             if (feature) {
                 var coordinates = map.getCoordinateFromPixel(evt.pixel);
                 overlay.setPosition(coordinates);
-                content.innerHTML = '<p>' + feature.get('name') + '</p><code>longitude: </code>' + feature.get('longitude')+ '</p><code>latitude: </code>' + feature.get('latitude');
+                content.innerHTML = '<p>' + feature.get('name') + '</p><code>longitude: </code>' + feature.get('longitude') + '</p><code>latitude: </code>' + feature.get('latitude');
             }
             else {
                 overlay.setPosition(undefined);
@@ -257,4 +256,6 @@
 
     </script>
 </body>
+
+<p>The hotel is not quite far from Monash University. We also mark the train station to help you! <br> Click the red point, it will tell you what is it.</p>
 
